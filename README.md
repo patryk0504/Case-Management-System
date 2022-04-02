@@ -22,4 +22,4 @@ How to run:
   - open it in ide such as IDEA
 
 In both options app should start on url: http://localhost:7000/swagger-ui/index.html
-Api url for manual testing is: http://localhost:7000/api
+<br/>Api url for manual testing: http://localhost:7000/api
