@@ -20,6 +20,7 @@ Used IT tools:
 2. Second option:
   - download project from the repository
   - open it in ide such as IDEA
+  - maven config file should be automaticaly detected
 
 # URLs
 
@@ -28,6 +29,3 @@ App should start on localhost:7000 and should provide swagger docs: http://local
 
 # Tests
 Controlers and repositories tests available in: management/src/test/java/com/example/management
-
-In both options app should start on url and should provide swagger docs: http://localhost:7000/swagger-ui/index.html
-<br/>Api url for manual testing: http://localhost:7000/api
