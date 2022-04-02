@@ -1,7 +1,7 @@
 # Case-Management-System
 **Cisco Recruitment task that includes Java Spring, JPA, Rest API**
 
-Link to .jar file: https://drive.google.com/file/d/1edcazvS8o3_m9ThSNxWfNb2xmFLUTzoB/view?usp=sharing
+Link to .jar file: https://drive.google.com/file/d/1as_TfRNJTRUHN8IIcfK5ETsELVad3fiv/view?usp=sharing
 
 Used IT tools:
 - Java
