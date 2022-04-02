@@ -138,7 +138,15 @@ public class CaseManagementController {
 
 
     @PutMapping("/cases/{id}")
-    @Operation(summary = "Update the case with given id")
+    @Operation(summary = "Update the case with given id",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "My description here.",
+                    content = @Content(examples = @ExampleObject("{\n" +
+                            "    \"title\" : \"testTitle2\",\n" +
+                            "    \"description\" : \"simpleDescription2\",\n" +
+                            "    \"severity\" : \"LOW\",\n" +
+                            "    \"status\" : \"DONE\"\n" +
+                            "}"))))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Case updated",
                     content = {@Content(mediaType = "application/json",
