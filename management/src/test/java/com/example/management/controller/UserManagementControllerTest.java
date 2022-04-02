@@ -11,7 +11,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Arrays;
 import java.util.Optional;
 
-import com.example.management.HypermediaConfiguration;
 import com.example.management.controller.UserManagementController;
 import com.example.management.model.User;
 import com.example.management.model.UserModelAssembler;
@@ -31,7 +30,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(UserManagementController.class)
-@Import({ HypermediaConfiguration.class })
 public class UserManagementControllerTest {
 
     @Autowired private MockMvc mvc;

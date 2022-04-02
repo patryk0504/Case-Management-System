@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader implements ApplicationRunner {
 
-    private CaseRepository caseRepository;
+    private final CaseRepository caseRepository;
 
     @Autowired
     public DataLoader(CaseRepository caseRepository) {

@@ -3,7 +3,6 @@ package com.example.management.controller;
 import com.example.management.exception.UserNotFoundException;
 import com.example.management.model.User;
 import com.example.management.model.UserModelAssembler;
-import com.example.management.repository.CaseRepository;
 import com.example.management.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -13,7 +12,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,13 +24,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequestMapping("/api")
 public class UserManagementController {
-    CaseRepository caseRepository;
-    UserRepository userRepository;
+    private final UserRepository userRepository;
     private final UserModelAssembler userAssembler;
 
     @Autowired
-    public UserManagementController(CaseRepository caseRepository, UserModelAssembler userAssembler, UserRepository userRepository) {
-        this.caseRepository = caseRepository;
+    public UserManagementController(UserModelAssembler userAssembler, UserRepository userRepository) {
         this.userRepository = userRepository;
         this.userAssembler = userAssembler;
     }

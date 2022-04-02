@@ -6,6 +6,7 @@ import com.example.management.repository.CaseRepository;
 import com.example.management.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -18,7 +19,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import javax.validation.ConstraintViolationException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,10 +29,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequestMapping("/api")
 public class CaseManagementController {
-    CaseRepository caseRepository;
-    UserRepository userRepository;
+    private final CaseRepository caseRepository;
+    private final UserRepository userRepository;
     private final CaseModelAssembler caseAssembler;
     private final UserModelAssembler userAssembler;
+
 
     @Autowired
     public CaseManagementController(CaseRepository caseRepository, CaseModelAssembler caseAssembler, UserModelAssembler userAssembler, UserRepository userRepository) {
@@ -102,11 +103,25 @@ public class CaseManagementController {
     }
 
     @PostMapping("/cases")
-    @Operation(summary = "Create a case with given parameters")
+    @Operation(summary = "Create a case with given parameters",
+    requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "My description here.",
+            content = @Content(examples = @ExampleObject("{\n" +
+                    "    \"_user\" : {\n" +
+                    "        \"username\" : \"testUsername\",\n" +
+                    "        \"email\" : \"testEmail@wp.pl\"\n" +
+                    "    },\n" +
+                    "    \"_case\":{\n" +
+                    "        \"title\" : \"testTitle\",\n" +
+                    "        \"description\" : \"simpleDescription\",\n" +
+                    "        \"severity\" : \"low\"\n" +
+                    "}\n" +
+                    "}"))))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Case created",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = User.class))}),
+                            schema = @Schema(implementation = User.class)
+                    )}),
             @ApiResponse(responseCode = "500", description = "Something went wrong",
                     content = @Content)})
     public ResponseEntity<?> createCase(@RequestBody RequestWrapper requestWrapper) {
@@ -118,6 +133,9 @@ public class CaseManagementController {
         return ResponseEntity.created(caseEntityModelCase.getRequiredLink(IanaLinkRelations.SELF).toUri())
                 .body(caseEntityModelCase);
     }
+
+
+
 
     @PutMapping("/cases/{id}")
     @Operation(summary = "Update the case with given id")

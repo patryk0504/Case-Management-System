@@ -15,6 +15,7 @@ public class CaseModelAssembler  implements RepresentationModelAssembler<Case, E
         return EntityModel.of(_case,
                 linkTo(methodOn(CaseManagementController.class).getOneCase(_case.getId())).withSelfRel(),
                 linkTo(methodOn(CaseManagementController.class).closeCase(_case.getId())).withRel("close case"),
+                linkTo(methodOn(CaseManagementController.class).removeClosedCase(_case.getId())).withRel("delete case"),
                 linkTo(methodOn(CaseManagementController.class).getAllCases()).withRel("all cases"),
                 linkTo(methodOn(CaseManagementController.class).getCaseUser(_case.getId())).withRel("user")
                 );

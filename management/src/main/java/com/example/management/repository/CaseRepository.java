@@ -10,8 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CaseRepository extends JpaRepository<Case, Long>{
-//    List<Case> findByStatus(Status status);
-//    List<Case> findBySeverity(Severity severity);
     Long removeAllByStatus(Status status);
     Optional<Case> findByUuid(UUID uuid);
 }
