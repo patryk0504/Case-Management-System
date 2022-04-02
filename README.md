@@ -20,6 +20,7 @@ Used IT tools:
 2. Second option:
   - download project from the repository
   - open it in ide such as IDEA
+  - maven config file should be automaticaly detected
 
 # URLs
 
